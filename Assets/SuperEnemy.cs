@@ -1,13 +1,13 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SuperEnemy : MonoBehaviour
 {
-    [SerializeField] GameObject ExplosionEffect;
     [SerializeField] public float speed = 1f;
     [SerializeField] GameObject bullet;
     private Rigidbody2D rb;
+    [SerializeField] GameObject ExplosionEffect;
 
     void Start()
     {
@@ -20,12 +20,13 @@ public class SuperEnemy : MonoBehaviour
     {
         GameObject explosion = Instantiate(ExplosionEffect);
         explosion.transform.position = this.transform.position;
+        GameSceneManager.Score++;
         Destroy(this.gameObject);
     }
 
     void Shoot()
     {
-        for (int i =  -50; i <=  50; i += 20  )
+        for(int i = -50; i <= 50; i+=10)
         {
             GameObject b = Instantiate(bullet);
             b.transform.position = transform.position + new Vector3(0f, -0.5f, 0f);
@@ -33,4 +34,11 @@ public class SuperEnemy : MonoBehaviour
             bulletRigid.AddForce(new Vector2(i, -100f));
         }
     }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
 }

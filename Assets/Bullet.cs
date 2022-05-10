@@ -1,11 +1,10 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
     [SerializeField] float ActiveTime = 2f;
-
     void Start()
     {
         Invoke("DestroyMyself", ActiveTime);
@@ -15,9 +14,14 @@ public class Bullet : MonoBehaviour
     {
         Destroy(this.gameObject);
     }
-    
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Destroy(this.gameObject); //©•ª©g‚ÌƒIƒuƒWƒFƒNƒg‚ğÁ‹
+        Destroy(this.gameObject); //è‡ªåˆ†è‡ªèº«ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æ¶ˆå»
+    }
+
+    void Update()
+    {
+        
     }
 }

@@ -1,9 +1,10 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BGController : MonoBehaviour
 {
+    [SerializeField] float ScrollSpeed;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,29 +14,25 @@ public class BGController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Scroll();  //ˆÊ’u‚ð­‚µ‚¾‚¯ã‚ÉXV
+        Scroll();
 
-        if (transform.position.y >=11f)  //‚à‚µ‰æ–Ê‚É‰f‚ç‚È‚­‚È‚Á‚½‚ç
+        if(transform.position.y < -11f)
         {
-            ResetPosition(); //ˆê”Ô‰º‚ÌˆÊ’u‚ÉˆÚ“®
+            ResetPosition();
         }
-
     }
     void Scroll()
     {
-        //ˆÊ’u‚ð­‚µ‚¾‚¯ã‚ÉXV‚·‚éƒR[ƒh
         Vector3 pos = transform.position;
-
-        float ScrollSpeed = 1;
-        pos.y += ScrollSpeed;
+        pos.y -= ScrollSpeed;
         transform.position = pos;
-
     }
+
     void ResetPosition()
     {
-        //ˆê”Ô‰º‚ÌˆÊ’u‚ÉˆÚ“®‚·‚éƒR[ƒh
         Vector3 pos = transform.position;
-        pos.y -= 30f;
+        //pos.y -= 30f;
+        pos.y += 30f;
         transform.position = pos;
     }
 }
